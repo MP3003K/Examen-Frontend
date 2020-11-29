@@ -1,0 +1,53 @@
+<div class="container" style="max-width: 50%; margin-top: 50px;">
+  <div class="row justify-content-md-center">
+    <div class="col col-4">
+      <div class="card">
+        <div class="card-header bg-primary">
+            <h5 class="card-title" style="color: white;">{{titulo}} Producto</h5>
+        </div>
+        <div class="card-body"> 
+            <div class="form-group">
+                <label for="a">Producto</label>
+                <input type="text" name="nomprod" class="form-control" [(ngModel)]="productoModel.nomprod">
+                <input type="text" name="precio" class="form-control" [(ngModel)]="productoModel.precio">
+                <input type="text" name="stock" class="form-control" [(ngModel)]="productoModel.stock">
+
+                <input type="hidden" name="idproducto" class="form-control" [(ngModel)]="productoModel.idproducto">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" (click)="create()">{{accion}}</button>
+            </div>           
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOMPROD</th>
+            <th scope="col">PRECIO</th>
+            <th scope="col">STOCK</th>
+            <th scope="col">ESTADO</th>
+            <th scope="coll" colspan="2">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of productos">
+            <td>{{producto.IDPRODUCTO}}</td>
+            <td>{{producto.NOMPROD}}</td>
+            <td>{{producto.PRECIO}}</td>
+            <td>{{producto.STOCK}}</td>
+            <td>{{producto.ESTADO}}</td>
+            <td>
+              <a type="button" class="btn btn-warning" (click)="cargarProducto(producto.IDPRODUCTO)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            </td>
+            <td>
+              <a type="button" class="btn btn-danger"(click)="delProducto(producto.IDPRODUCTO)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            </td>
+          </tr>          
+        </tbody>
+      </table>
+    </div>
+</div>
+</div>
